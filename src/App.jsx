@@ -12,9 +12,8 @@ const App = () => {
   };
 
   useEffect(() => {
-    // Listen for messages from the React Native app
     const handleMessage = (event) => {
-      setMessageFromNative(event.data); // Update the state with the message received
+      setMessageFromNative(event.data);
     };
 
     window.addEventListener('message', handleMessage);
