@@ -5,16 +5,20 @@ const App = () => {
 
   // Send JSON message to React Native
   const sendMessageToReactNative = () => {
-    const jsonMessage = {
+    const jsonMessage = JSON.stringify({
       type: 'notification',
       payload: {
         message: 'Hello from the Web App!',
         timestamp: new Date().toISOString(),
       },
-    };
+    });
 
-    if (window.ReactNativeWebView) {
-      window.ReactNativeWebView.postMessage(JSON.stringify(jsonMessage));
+    if (window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
+      try {
+        window.ReactNativeWebView.postMessage(jsonMessage);
+      } catch (error) {
+        console.error('Failed to send message to React Native:', error);
+      }
     } else {
       alert('React Native WebView is not available!');
     }
