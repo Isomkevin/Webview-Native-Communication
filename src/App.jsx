@@ -25,7 +25,7 @@ const App = () => {
     const handleMessage = (event) => {
       try {
         const message = JSON.parse(event.data); // Parse JSON data
-        if (message.type === 'response') {
+        if (message.type === 'greeting') {
           setMessageFromNative(message.payload.message);
         } else {
           console.warn('Unhandled message type:', message.type);
