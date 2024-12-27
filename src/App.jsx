@@ -28,7 +28,7 @@ const App = () => {
     // Handle messages from React Native
     const handleMessage = (event) => {
       try {
-        const message = JSON.parse(event.data); // Parse JSON data
+        const message = JSON.parse(event.data);
         if (message.type === 'greeting') {
           setMessageFromNative(message.payload.message);
         } else {
